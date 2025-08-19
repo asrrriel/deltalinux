@@ -32,7 +32,7 @@ git clone https://github.com/file/file --depth=1
 
 git clone https://gitlab.com/bzip2/bzip2.git --depth=1
 
-git clone https://github.com/seccomp/libseccomp --depth=1
+git clone https://github.com/seccomp/libseccomp --branch=release-2.6 --depth=1
 
 git clone https://github.com/tukaani-project/xz --depth=1
 
