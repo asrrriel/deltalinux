@@ -113,6 +113,7 @@ cd ../..
 
 cd builds/zstd
 sudo make DESTDIR=$ROOT_PATH install
+
 cd ../..
 
 # symlink libncursesw.so.6 -> libncurses.so.6
@@ -120,6 +121,8 @@ sudo ln -sf /usr/lib/libncursesw.so.6 $ROOT_PATH/usr/lib/libncurses.so.6
 sudo ln -sf /usr/lib/libtinfow.so.6 $ROOT_PATH/usr/lib/libtinfo.so.6
 
 sudo ldconfig -v -r $ROOT_PATH
+
+sudo cp -r $ROOT_PATH/usr/local/* $ROOT_PATH/usr/
 
 # Unmount partitions
 sudo umount $EFI_PART

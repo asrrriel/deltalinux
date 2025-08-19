@@ -36,4 +36,4 @@ git clone https://github.com/seccomp/libseccomp --branch=release-2.6 --depth=1
 
 git clone https://github.com/tukaani-project/xz --depth=1
 
-git clone https://github.com/facebook/zstd --depth=1
+git clone https://github.com/facebook/zstd --branch=v1.5.7 --depth=1
