@@ -24,80 +24,108 @@ ROOT_PART="${LOOP_DEV}p2"
 sudo mkfs.fat -F32 "$EFI_PART"
 sudo mkfs.ext4 "$ROOT_PART"
 
-# Populate EFI partition
-mkdir -p /tmp/efi
-sudo mount "$EFI_PART" /tmp/efi
+# Mount Shit(todo: do fuse mount so this POS doesnt need unneeded root perms)
+mkdir -p mnt
+mkdir -p mnt/efi
+mkdir -p mnt/root
 
-sudo mkdir -p /tmp/efi/boot/limine
+sudo mount "$EFI_PART" mnt/efi
+sudo mount "$ROOT_PART" mnt/root
+
+EFI_PATH=$(realpath mnt/efi)
+ROOT_PATH=$(realpath mnt/root)
+
+# Populate EFI partition
+sudo mkdir -p $EFI_PATH/boot/limine
 
 # BIOS files
-sudo cp builds/limine/share/limine/limine-bios.sys      /tmp/efi/limine-bios.sys
-sudo cp builds/limine/share/limine/limine-bios-cd.bin  /tmp/efi/boot/limine/
-sudo cp builds/limine/share/limine/limine-bios-pxe.bin /tmp/efi/boot/limine/
+sudo cp builds/limine/share/limine/limine-bios.sys     $EFI_PATH/limine-bios.sys
+sudo cp builds/limine/share/limine/limine-bios-cd.bin  $EFI_PATH/boot/limine/
+sudo cp builds/limine/share/limine/limine-bios-pxe.bin $EFI_PATH/boot/limine/
 
 # UEFI files
-sudo cp builds/limine/share/limine/limine-uefi-cd.bin  /tmp/efi/boot/limine/
-sudo cp builds/limine/share/limine/BOOTIA32.EFI        /tmp/efi/boot/
-sudo cp builds/limine/share/limine/BOOTX64.EFI        /tmp/efi/boot/
+sudo cp builds/limine/share/limine/limine-uefi-cd.bin  $EFI_PATH/boot/limine/
+sudo cp builds/limine/share/limine/BOOTIA32.EFI        $EFI_PATH/boot/
 
 # Linux kernel
-sudo cp builds/linux/vmlinuz /tmp/efi/boot/
+sudo cp builds/linux/vmlinuz $EFI_PATH/boot/
 
 # Limine config
-sudo cp configs/limine.conf /tmp/efi/boot/limine/
-
-sudo umount /tmp/efi
-rmdir /tmp/efi
+sudo cp configs/limine.conf $EFI_PATH/boot/limine/
 
 # Populate root partition
-mkdir -p /tmp/root
-sudo mount "$ROOT_PART" /tmp/root
+sudo mkdir -p $ROOT_PATH/{bin,etc,sbin,usr,dev,sys,proc,lib,lib64}
+sudo mkdir -p $ROOT_PATH/usr/{bin,lib,sbin,lib64,libx32,include,share,src}
 
-sudo mkdir -p /tmp/root/{bin,etc,sbin,usr,dev,sys,proc,lib,lib64}
-sudo mkdir -p /tmp/root/usr/{bin,lib,sbin,lib64}
+sudo ln -sf /lib  $ROOT_PATH/usr/lib
+sudo ln -sf /lib64 $ROOT_PATH/usr/lib64
+sudo ln -sf /bin  $ROOT_PATH/usr/bin
+sudo ln -sf /sbin $ROOT_PATH/usr/sbin
 
-sudo ln -sf /lib  /tmp/root/usr/lib
-sudo ln -sf /lib64 /tmp/root/usr/lib64
-sudo ln -sf /bin  /tmp/root/usr/bin
-sudo ln -sf /sbin /tmp/root/usr/sbin
+sudo cp main $ROOT_PATH/sbin/init
 
-sudo cp main /tmp/root/sbin/init
-
-sudo cp builds/bash/bash /tmp/root/usr/bin/bash
-sudo cp builds/bash/bashbug /tmp/root/usr/bin/bashbug
-sudo cp builds/bash/bashversion /tmp/root/usr/bin/bashversion
+sudo cp builds/bash/bash $ROOT_PATH/usr/bin/bash
+sudo cp builds/bash/bashbug $ROOT_PATH/usr/bin/bashbug
+sudo cp builds/bash/bashversion $ROOT_PATH/usr/bin/bashversion
 
 # symlink bash to sh
-sudo ln -sf /usr/bin/bash /tmp/root/bin/sh
+sudo ln -sf /usr/bin/bash $ROOT_PATH/bin/sh
 
 cd builds/coreutils/
-sudo make DESTDIR=/tmp/root install
+sudo make DESTDIR=$ROOT_PATH install
 cd ../..
 
 cd builds/util-linux
-sudo make DESTDIR=/tmp/root install
+sudo make DESTDIR=$ROOT_PATH install
 cd ../..
 
 cd builds/nano
-sudo make DESTDIR=/tmp/root install
+sudo make DESTDIR=$ROOT_PATH install
 cd ../..
 
 cd builds/glibc
-sudo make DESTDIR=/tmp/root install
+sudo make DESTDIR=$ROOT_PATH install
 cd ../..
 
 cd builds/ncurses
-sudo make DESTDIR=/tmp/root install
+sudo make DESTDIR=$ROOT_PATH install
+cd ../..
+
+cd builds/zlib
+sudo make DESTDIR=$ROOT_PATH install
+cd ../..
+
+cd builds/file
+sudo make DESTDIR=$ROOT_PATH install
+cd ../..
+
+cd builds/bzip2
+sudo DESTDIR=$ROOT_PATH meson install
+cd ../..
+
+cd builds/libseccomp
+sudo make DESTDIR=$ROOT_PATH install
+cd ../..
+
+cd builds/xz
+sudo make DESTDIR=$ROOT_PATH install
+cd ../..
+
+cd builds/zstd
+sudo make DESTDIR=$ROOT_PATH install
 cd ../..
 
 # symlink libncursesw.so.6 -> libncurses.so.6
-sudo ln -sf /usr/lib/libncursesw.so.6 /tmp/root/usr/lib/libncurses.so.6
-sudo ln -sf /usr/lib/libtinfow.so.6 /tmp/root/usr/lib/libtinfo.so.6
+sudo ln -sf /usr/lib/libncursesw.so.6 $ROOT_PATH/usr/lib/libncurses.so.6
+sudo ln -sf /usr/lib/libtinfow.so.6 $ROOT_PATH/usr/lib/libtinfo.so.6
 
-sudo ldconfig -v -r /tmp/root
+sudo ldconfig -v -r $ROOT_PATH
 
-sudo umount /tmp/root
-rmdir /tmp/root
+# Unmount partitions
+sudo umount $EFI_PART
+sudo umount $ROOT_PART
+
+sudo rm -rf mnt
 
 # Install Limine bootloader (BIOS)
 ./builds/limine/bin/limine bios-install disk/disk.img
