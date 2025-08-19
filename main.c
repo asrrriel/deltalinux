@@ -1,13 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 int main(int argc, char **argv) {
-  write(1, "Hello, World!\n", 14);
+  printf("Hello, world!\n");
 
-  // fork /bin/sh
+  FILE *printk = fopen("/proc/sys/kernel/printk", "w");
+  if (printk) {
+    fprintf(printk, "0 0 0 0\n");
+    fclose(printk);
+  } else {
+    perror("Failed to open /proc/sys/kernel/printk");
+  }
+
+  system("/usr/bin/ln -s /usr/lib/libbz2.so /usr/lib/libbz2.so.1.0");
+
+  // fork /bin/bash
   pid_t pid = fork();
   if (pid == 0) {
     // Child process
-    execl("/bin/sh", "sh", NULL);
+    execl("/usr/bin/bash", "bash", NULL);
   }
 
   for (;;)
