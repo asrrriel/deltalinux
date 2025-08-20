@@ -5,7 +5,7 @@ C_SRC = $(shell find $(SRC_DIR) -name "*.c")
 C_OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(C_SRC))
 
 CC = gcc
-CFLAGS = -Wall -g -I$(SRC_DIR)
+CFLAGS = -Wall -I$(SRC_DIR)
 
 $(shell mkdir -p $(OBJ_DIR))
 
@@ -22,9 +22,10 @@ clean:
 	rm -rf $(OBJ_DIR)/*.o $(GEN_DIR)/*.c testk
 
 install:
-	mkdir -p $(DESTDIR)/bin
-	cp ralsei $(DESTDIR)/bin
-	ln -sf ralsei $(DESTDIR)/bin/ral
+	mkdir -p $(DESTDIR)/usr
+	mkdir -p $(DESTDIR)/usr/bin
+	cp ralsei $(DESTDIR)/usr/bin
+	ln -sf ralsei $(DESTDIR)/usr/bin/ral
 
 
 # Phony targets

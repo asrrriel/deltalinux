@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p tmp
-cd tmp
+mkdir -p pkgs/tmp
+cd pkgs/tmp
 
 git clone https://github.com/torvalds/linux --depth=1
 
@@ -11,6 +11,12 @@ if [ ! -f ncurses-6.5.tar.gz ]; then
     wget https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz
     tar -xvzf ncurses-6.5.tar.gz
 fi
+
+if [ ! -f tar-1.35.tar.gz ]; then
+    wget https://ftp.gnu.org/gnu/tar/tar-1.35.tar.gz
+    tar -xvzf tar-1.35.tar.gz
+fi
+
 
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
@@ -35,3 +41,17 @@ git clone https://github.com/seccomp/libseccomp --branch=release-2.6 --depth=1
 git clone https://github.com/tukaani-project/xz --depth=1
 
 git clone https://github.com/facebook/zstd --branch=v1.5.7 --depth=1
+
+git clone https://git.savannah.nongnu.org/git/acl.git --depth=1
+
+git clone https://git.savannah.nongnu.org/git/attr.git --depth=1
+
+git clone https://git.savannah.gnu.org/git/readline.git --depth=1
+
+git clone https://github.com/PCRE2Project/pcre2 --depth=1
+
+git clone https://git.savannah.gnu.org/git/grep.git --depth=1
+
+git clone https://git.savannah.gnu.org/git/sed.git --depth=1
+
+git clone https://git.savannah.gnu.org/git/gzip.git --depth=1
