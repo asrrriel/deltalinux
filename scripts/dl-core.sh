@@ -12,8 +12,6 @@ if [ ! -f ncurses-6.5.tar.gz ]; then
     tar -xvzf ncurses-6.5.tar.gz
 fi
 
-git clone https://github.com/notnekodev/jash --depth=1
-
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
 git clone https://git.savannah.gnu.org/git/bash.git --depth=1
@@ -30,7 +28,7 @@ git clone https://github.com/madler/zlib --depth=1
 
 git clone https://github.com/file/file --depth=1
 
-git clone https://gitlab.com/bzip2/bzip2.git --depth=1
+git clone https://gitlab.com/bzip2/bzip2.git --depth=1 --branch=bzip2-1.0.8
 
 git clone https://github.com/seccomp/libseccomp --branch=release-2.6 --depth=1
 

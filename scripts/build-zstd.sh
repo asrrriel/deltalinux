@@ -6,5 +6,3 @@ cp -r tmp/zstd/* builds/zstd
 cd builds/zstd
 
 make -j$(nproc)
-
-cd ../../

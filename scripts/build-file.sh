@@ -9,5 +9,3 @@ cd ../../builds/file
 
 ../../tmp/file/configure --prefix=/usr
 make -j$(nproc)
-
-cd ../../

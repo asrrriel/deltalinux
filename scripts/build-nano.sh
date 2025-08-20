@@ -8,5 +8,3 @@ cd tmp/nano
 cd ../../builds/nano
 ../../tmp/nano/configure --prefix=/usr
 make -j$(nproc)
-
-cd ../../

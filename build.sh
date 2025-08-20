@@ -14,4 +14,5 @@ sh scripts/build-seccomp.sh
 sh scripts/build-xz.sh
 sh scripts/build-zlib.sh
 sh scripts/build-zstd.sh
+sh scripts/build-ralsei.sh
 sh scripts/make-image.sh

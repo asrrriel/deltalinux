@@ -8,5 +8,3 @@ cd tmp/libseccomp
 cd ../../builds/libseccomp
 ../../tmp/libseccomp/configure --prefix=/usr
 make -j$(nproc)
-
-cd ../../

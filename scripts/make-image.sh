@@ -73,8 +73,6 @@ sudo mknod $ROOT_PATH/dev/urandom c 1 9
 echo "root:x:0:0:root:/root:/bin/bash" | sudo tee $ROOT_PATH/etc/passwd > /dev/null
 echo "root:x:0:" | sudo tee $ROOT_PATH/etc/group > /dev/null
 
-sudo cp main $ROOT_PATH/sbin/init
-
 sudo cp builds/bash/bash        $ROOT_PATH/usr/bin/bash
 sudo cp builds/bash/bashbug     $ROOT_PATH/usr/bin/bashbug
 sudo cp builds/bash/bashversion $ROOT_PATH/usr/bin/bashversion
@@ -108,10 +106,9 @@ cd builds/file
 sudo make DESTDIR=$ROOT_PATH install
 cd ../..
 
-mkdir -p builds/bzip2
 cd builds/bzip2
-sudo cmake -DCMAKE_INSTALL_PREFIX:PATH=$ROOT_PATH ../../tmp/bzip2
-sudo cmake --build . --target install --config Release
+sudo make PREFIX=$ROOT_PATH/usr install
+sudo cp *.so.* $ROOT_PATH/usr/lib
 cd ../..
 
 cd builds/libseccomp
@@ -126,13 +123,10 @@ cd builds/zstd
 sudo make DESTDIR=$ROOT_PATH install
 cd ../..
 
+sudo cp -r builds/ralsei/bin/* $ROOT_PATH/bin
+
 sudo ln -sf /usr/lib/libncursesw.so.6 $ROOT_PATH/usr/lib/libncurses.so.6
 sudo ln -sf /usr/lib/libtinfow.so.6   $ROOT_PATH/usr/lib/libtinfo.so.6
-
-if [ -f $ROOT_PATH/usr/lib/libbz2.so ]; then
-    sudo ln -sf libbz2.so $ROOT_PATH/usr/lib/libbz2.so.1.0
-    sudo ln -sf libbz2.so $ROOT_PATH/usr/lib/libbz2.so.1
-fi
 
 sudo cp configs/ld.so.conf $ROOT_PATH/etc/ld.so.conf
 sudo ldconfig -v -r $ROOT_PATH

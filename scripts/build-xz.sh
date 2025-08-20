@@ -8,5 +8,3 @@ cd tmp/xz
 cd ../../builds/xz
 ../../tmp/xz/configure --prefix=/usr
 make -j$(nproc)
-
-cd ../../
