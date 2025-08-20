@@ -1,4 +1,6 @@
 #!/bin/bash
-sh scripts/dl-core.sh
-sh scripts/build-core.sh
+set -e
+
+sh pkgs/dl-core.sh
+sh pkgs/build-core.sh
 sh scripts/make-image.sh
