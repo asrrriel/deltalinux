@@ -5,7 +5,7 @@ mkdir -p build/coreutils
 cd tmp/coreutils
 
 ./bootstrap
-./configure --without-selinux --disable-libcap --prefix=/usr
+FORCE_UNSAFE_CONFIGURE=1 ./configure --without-selinux --disable-libcap --prefix=/usr
 
 make -j$(nproc)
 
