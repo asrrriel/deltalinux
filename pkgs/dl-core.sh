@@ -17,6 +17,13 @@ if [ ! -f tar-1.35.tar.gz ]; then
     tar -xvzf tar-1.35.tar.gz
 fi
 
+if [ ! -f gettext-0.26.tar.gz ]; then
+    wget https://ftp.gnu.org/pub/gnu/gettext/gettext-0.26.tar.gz
+    tar -xvzf gettext-0.26.tar.gz
+fi
+
+https://ftp.gnu.org/pub/gnu/gettext/gettext-0.26.tar.gz
+
 
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
@@ -55,3 +62,7 @@ git clone https://git.savannah.gnu.org/git/grep.git --depth=1
 git clone https://git.savannah.gnu.org/git/sed.git --depth=1
 
 git clone https://git.savannah.gnu.org/git/gzip.git --depth=1
+
+git clone http://github.com/GNOME/libxml2 --depth=1
+
+git clone https://github.com/legionus/kbd/ --depth=1
