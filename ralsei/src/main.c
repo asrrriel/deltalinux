@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
         printf("installing \"%s\" to \"%s\"\n", pkg_file, root);
         char cmd[4096];
 
-        sprintf(cmd, "tar -xvf %s -C %s 2>&1", pkg_file, root);
+        sprintf(cmd, "tar -xvf  %s -C %s --keep-old-files", pkg_file, root);
 
         printf("%s\n", cmd);
         system(cmd);

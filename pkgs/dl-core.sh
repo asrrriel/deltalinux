@@ -27,7 +27,10 @@ if [ ! -f kmod-34.tar.gz ]; then
     tar -xvzf kmod-34.tar.gz
 fi
 
-https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-34.tar.gz
+if [ ! -f openssl-3.5.2.tar.gz ]; then
+    wget https://github.com/openssl/openssl/releases/download/openssl-3.5.2/openssl-3.5.2.tar.gz
+    tar -xvzf openssl-3.5.2.tar.gz
+fi
 
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
@@ -38,8 +41,6 @@ git clone https://github.com/coreutils/coreutils.git --depth=1
 git clone https://github.com/util-linux/util-linux.git --depth=1
 
 git clone https://git.savannah.gnu.org/git/nano.git --depth=1
-
-git clone https://github.com/systemd/systemd.git --depth=1
 
 git clone https://github.com/madler/zlib --depth=1
 
@@ -70,3 +71,17 @@ git clone https://git.savannah.gnu.org/git/gzip.git --depth=1
 git clone http://github.com/GNOME/libxml2 --depth=1
 
 git clone https://github.com/legionus/kbd/ --depth=1
+
+git clone https://github.com/systemd/systemd.git --depth=1
+
+git clone https://git.kernel.org/pub/scm/libs/libcap/libcap.git/ --depth=1
+
+git clone https://github.com/linux-audit/audit-userspace --depth=1
+
+git clone https://github.com/besser82/libxcrypt --depth=1
+
+git clone https://github.com/stevegrubb/libcap-ng --depth=1
+
+git clone https://github.com/linux-pam/linux-pam --depth=1
+
+git clone https://github.com/shadow-maint/shadow --depth=1

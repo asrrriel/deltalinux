@@ -1,0 +1,4 @@
+#%PAM-1.0
+
+account   include   system-login
+session   include   system-login

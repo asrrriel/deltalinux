@@ -57,11 +57,18 @@ sudo mknod $ROOT_PATH/dev/urandom c 1 9
 
 echo "root:x:0:0:root:/root:/bin/bash" | sudo tee $ROOT_PATH/etc/passwd > /dev/null
 echo "root:x:0:" | sudo tee $ROOT_PATH/etc/group > /dev/null
+echo "root:$y$j9T$p4tFU6EY/.trbdPp6/qyb0$ZYSojQJi4zbUK4K2sb54ip4w9drchPTE8SFt9VkmNBB:20321::::::" | sudo tee $ROOT_PATH/etc/shadow > /dev/null
+
+sudo chmod 644 $ROOT_PATH/etc/passwd $ROOT_PATH/etc/group
+sudo chmod 600 $ROOT_PATH/etc/shadow
+sudo chown root:root $ROOT_PATH/etc/passwd /etc/group /etc/shadow
+
 
 for pkg in pkgs/done/*; do
         sudo pkgs/build/ralsei/usr/bin/ralsei install $pkg -r $ROOT_PATH
 done
 
+# Stuff that needs the packages to be installed
 sudo cp configs/ld.so.conf $ROOT_PATH/etc/ld.so.conf
 sudo cp configs/limine.conf $ROOT_PATH/boot/boot/limine/limine.conf
 sudo ldconfig -v -r $ROOT_PATH
