@@ -22,8 +22,12 @@ if [ ! -f gettext-0.26.tar.gz ]; then
     tar -xvzf gettext-0.26.tar.gz
 fi
 
-https://ftp.gnu.org/pub/gnu/gettext/gettext-0.26.tar.gz
+if [ ! -f kmod-34.tar.gz ]; then
+    wget https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-34.tar.gz
+    tar -xvzf kmod-34.tar.gz
+fi
 
+https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-34.tar.gz
 
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
