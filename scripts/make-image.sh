@@ -57,7 +57,7 @@ sudo mknod $ROOT_PATH/dev/urandom c 1 9
 
 echo "root:x:0:0:root:/root:/bin/bash" | sudo tee $ROOT_PATH/etc/passwd > /dev/null
 echo "root:x:0:" | sudo tee $ROOT_PATH/etc/group > /dev/null
-echo "root:fPO/488rhd38A:20322:0:99999:7:::" | sudo tee $ROOT_PATH/etc/shadow > /dev/null
+echo "root:fPO/488rhd38A:20322:0:99999:7:::" | sudo tee $ROOT_PATH/etc/shadow > /dev/null # The password is "root", your welcome
 
 sudo chmod 644 $ROOT_PATH/etc/passwd $ROOT_PATH/etc/group
 sudo chmod 600 $ROOT_PATH/etc/shadow
