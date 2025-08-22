@@ -2,9 +2,7 @@
 set -e
 
 mkdir -p build/attr
-cd tmp/attr
-
-./autogen.sh
+cd tmp/attr-2.5.2
 
 ./configure --prefix=/usr
 make -j$(nproc)

@@ -21,7 +21,7 @@ clone_repo() {
     local url=$2
     shift 2
     if [ ! -d "$dir" ]; then
-        git clone "$url" "$dir" "$@"
+        git clone "$url" "$dir" "$@" 
     fi
 }
 

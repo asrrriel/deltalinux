@@ -2,7 +2,7 @@
 set -e
 
 mkdir -p build/grep
-cd tmp/grep
+cd tmp/grep-3.11
 
 ./bootstrap
 

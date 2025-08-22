@@ -2,7 +2,7 @@
 set -e
 
 mkdir -p build/bash
-cd tmp/bash
+cd tmp/bash-5.2
 
 ./configure --prefix=/usr
 make -j$(nproc)

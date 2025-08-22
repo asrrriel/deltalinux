@@ -2,7 +2,7 @@
 set -e
 
 mkdir -p build/coreutils
-cd tmp/coreutils
+cd tmp/coreutils-9.5
 
 ./bootstrap
 FORCE_UNSAFE_CONFIGURE=1 ./configure --without-selinux --disable-libcap --prefix=/usr
