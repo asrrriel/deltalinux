@@ -32,6 +32,36 @@ if [ ! -f openssl-3.5.2.tar.gz ]; then
     tar -xvzf openssl-3.5.2.tar.gz
 fi
 
+if [ ! -f e2fsprogs-1.47.3.tar.gz ]; then
+    wget https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.47.3/e2fsprogs-1.47.3.tar.gz
+    tar -xvzf e2fsprogs-1.47.3.tar.gz
+fi
+
+if [ ! -f keyutils-1.6.3.tar.gz ]; then
+    wget https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-1.6.3.tar.gz
+    tar -xvzf keyutils-1.6.3.tar.gz
+fi
+
+if [ ! -f gdbm-1.26.tar.gz ]; then
+    wget https://ftp.gnu.org/gnu/gdbm/gdbm-1.26.tar.gz
+    tar -xvzf gdbm-1.26.tar.gz
+fi
+
+if [ ! -f cyrus-sasl-2.1.28.tar.gz ]; then
+    wget https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz
+    tar -xvzf cyrus-sasl-2.1.28.tar.gz
+fi
+
+if [ ! -f openldap-2.6.9.tgz ]; then
+    wget https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.9.tgz
+    tar -xvzf openldap-2.6.9.tgz
+fi
+
+if [ ! -f krb5-1.22.1.tar.gz ]; then
+    wget https://kerberos.org/dist/krb5/1.22/krb5-1.22.1.tar.gz
+    tar -xvzf krb5-1.22.1.tar.gz
+fi
+
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
 git clone https://git.savannah.gnu.org/git/bash.git --depth=1
@@ -85,3 +115,7 @@ git clone https://github.com/stevegrubb/libcap-ng --depth=1
 git clone https://github.com/linux-pam/linux-pam --depth=1
 
 git clone https://github.com/shadow-maint/shadow --depth=1
+
+git clone https://github.com/thkukuk/libnsl --depth=1
+
+git clone git://git.linux-nfs.org/projects/steved/libtirpc.git --depth=1
