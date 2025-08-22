@@ -119,3 +119,13 @@ git clone https://github.com/shadow-maint/shadow --depth=1
 git clone https://github.com/thkukuk/libnsl --depth=1
 
 git clone git://git.linux-nfs.org/projects/steved/libtirpc.git --depth=1
+
+git clone git://git.kernel.org/pub/scm/network/iproute2/iproute2.git --depth=1
+
+git clone https://github.com/libbpf/libbpf.git --depth=1
+
+git clone https://sourceware.org/git/elfutils.git --depth=1
+
+git clone https://git.netfilter.org/libmnl.git --depth=1
+
+git clone https://github.com/iputils/iputils.git --depth=1
