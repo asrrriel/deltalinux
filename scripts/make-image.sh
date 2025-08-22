@@ -71,6 +71,8 @@ done
 # Stuff that needs the packages to be installed
 sudo cp configs/ld.so.conf $ROOT_PATH/etc/ld.so.conf
 sudo cp configs/limine.conf $ROOT_PATH/boot/boot/limine/limine.conf
+sudo cp configs/bash.bashrc $ROOT_PATH/etc/bash.bashrc
+sudo cp configs/bash.bashrc $ROOT_PATH/etc/profile
 sudo ldconfig -v -r $ROOT_PATH
 
 sudo ln -sf /usr/share/zoneinfo/UTC $ROOT_PATH/etc/localtime
