@@ -228,3 +228,5 @@ git clone https://github.com/markov2/perl5-MailTools.git perl_mailtools --depth=
 git clone https://github.com/atoomic/perl-TimeDate.git perl_timedate --depth=1
 
 git clone git://git.kernel.org/pub/scm/git/git.git --depth=1
+
+git clone https://github.com/python/cpython.git --depth=1
