@@ -62,6 +62,17 @@ if [ ! -f krb5-1.22.1.tar.gz ]; then
     tar -xvzf krb5-1.22.1.tar.gz
 fi
 
+if [ ! -f libbsd-0.12.2.tar.xz ]; then
+    wget https://libbsd.freedesktop.org/releases/libbsd-0.12.2.tar.xz
+    tar -xvJf libbsd-0.12.2.tar.xz
+fi
+
+if [ ! -f libmd-1.1.0.tar.xz ]; then
+    # fucking freedesktop guys put it into the libbsd dir???
+    wget https://libbsd.freedesktop.org/releases/libmd-1.1.0.tar.xz
+    tar -xvJf libmd-1.1.0.tar.xz
+fi
+
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
 git clone https://git.savannah.gnu.org/git/bash.git --depth=1
