@@ -5,7 +5,7 @@ mkdir -p build/coreutils
 cd tmp/coreutils
 
 ./bootstrap
-FORCE_UNSAFE_CONFIGURE=1 ./configure --disable-libcap --prefix=/usr
+FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr
 
 make -j$(nproc)
 

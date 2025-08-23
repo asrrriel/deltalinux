@@ -41,7 +41,7 @@ ROOT_PATH=$(realpath mnt/root)
 EFI_PATH=$(realpath mnt/root/boot)
 
 sudo mkdir -p $ROOT_PATH/{etc,dev,sys,proc,tmp,var,run,home,root}
-sudo mkdir -p $ROOT_PATH/usr/{bin,lib,sbin,lib64,libx32,include,share,src}
+sudo mkdir -p $ROOT_PATH/usr/{bin,lib,sbin,lib64,libx32,include,share,src,var}
 
 sudo ln -sf usr/bin   $ROOT_PATH/bin
 sudo ln -sf usr/sbin  $ROOT_PATH/sbin
@@ -61,8 +61,17 @@ echo "root:fPO/488rhd38A:20322:0:99999:7:::" | sudo tee $ROOT_PATH/etc/shadow > 
 
 sudo chmod 644 $ROOT_PATH/etc/passwd $ROOT_PATH/etc/group
 sudo chmod 600 $ROOT_PATH/etc/shadow
-sudo chown root:root $ROOT_PATH/etc/passwd /etc/group /etc/shadow
+sudo chown root:root $ROOT_PATH/etc/passwd $ROOT_PATH/etc/group $ROOT_PATH/etc/shadow
 
+sudo mkdir -p $ROOT_PATH/var/run/audit
+sudo chown root:root $ROOT_PATH/var/run/audit
+sudo chmod 0755 $ROOT_PATH/var/run/audit
+
+sudo mkdir -p $ROOT_PATH/usr/var/run/audit
+sudo chown root:root $ROOT_PATH/usr/var/run/audit
+sudo chmod 0755 $ROOT_PATH/usr/var/run/audit
+
+sudo mkdir -p $ROOT_PATH/etc/audit
 
 for pkg in pkgs/done/*; do
         sudo pkgs/build/ralsei/usr/bin/ralsei install $pkg -r $ROOT_PATH
@@ -73,11 +82,11 @@ sudo cp configs/ld.so.conf $ROOT_PATH/etc/ld.so.conf
 sudo cp configs/limine.conf $ROOT_PATH/boot/boot/limine/limine.conf
 sudo cp configs/bash.bashrc $ROOT_PATH/etc/bash.bashrc
 sudo cp configs/bash.bashrc $ROOT_PATH/etc/profile
+sudo cp configs/auditd.conf $ROOT_PATH/etc/audit/auditd.conf
 sudo ldconfig -v -r $ROOT_PATH
 
 sudo ln -sf /usr/share/zoneinfo/UTC $ROOT_PATH/etc/localtime
 echo "UTC" | sudo tee $ROOT_PATH/etc/timezone > /dev/null
-
 
 sudo umount $EFI_PART
 sudo umount $ROOT_PART

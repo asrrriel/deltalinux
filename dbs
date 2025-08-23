@@ -17,9 +17,16 @@ case $1 in
         packages=("${@:2}")
         for pkg in "${packages[@]}"; do
             if [ -f "pkgs/buildscripts/$pkg.sh" ]; then
-                cd pkgs
-                sh "buildscripts/$pkg.sh"
-                cd ..
+                # picky ass fuckers
+                if [ "util-linux" == $pkg ] || [ "pam" == $pkg ]; then
+                    cd pkgs
+                    fakeroot sh "buildscripts/$pkg.sh"
+                    cd ..
+                else
+                    cd pkgs
+                    sh "buildscripts/$pkg.sh"
+                    cd ..
+                fi
             else
                 echo "Build script not found for package: $pkg"
             fi
