@@ -18,7 +18,7 @@ case $1 in
         for pkg in "${packages[@]}"; do
             if [ -f "pkgs/buildscripts/$pkg.sh" ]; then
                 # picky ass fuckers
-                if [ "util-linux" == $pkg ] || [ "pam" == $pkg ]; then
+                if [ "util-linux" == $pkg ] || [ "pam" == $pkg ] || [ "libutmp" == $pkg ]; then
                     cd pkgs
                     fakeroot sh "buildscripts/$pkg.sh"
                     cd ..
