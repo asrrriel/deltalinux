@@ -73,6 +73,59 @@ if [ ! -f libmd-1.1.0.tar.xz ]; then
     tar -xvJf libmd-1.1.0.tar.xz
 fi
 
+if [ ! -f findutils-4.10.0.tar.xz ]; then
+    wget https://ftp.gnu.org/gnu/findutils/findutils-4.10.0.tar.xz
+    tar -xvJf findutils-4.10.0.tar.xz
+fi
+
+if [ ! -f less-679.tar.gz ]; then
+    wget https://www.greenwoodsoftware.com/less/less-679.tar.gz
+    tar -xvzf less-679.tar.gz
+fi
+
+if [ ! -f libssh2-1.11.1.tar.gz ]; then
+    wget https://libssh2.org/download/libssh2-1.11.1.tar.gz
+    tar -xvzf libssh2-1.11.1.tar.gz
+fi
+
+if [ ! -f libidn2-v2.3.8-src.tar.gz ]; then
+    wget https://ftp.gnu.org/gnu/libidn/libidn2-v2.3.8-src.tar.gz
+    tar -xvzf libidn2-v2.3.8-src.tar.gz
+fi
+
+if [ ! -f libunistring-1.3.tar.gz ]; then
+    wget https://ftp.gnu.org/gnu/libunistring/libunistring-1.3.tar.gz
+    tar -xvzf libunistring-1.3.tar.gz
+fi
+
+if [ ! -f nghttp2-1.66.0.tar.gz ]; then
+    wget https://github.com/nghttp2/nghttp2/releases/download/v1.66.0/nghttp2-1.66.0.tar.gz
+    tar -xvzf nghttp2-1.66.0.tar.gz
+fi
+
+if [ ! -f p11-kit-0.25.5.tar.xz ]; then
+    wget https://github.com/p11-glue/p11-kit/releases/download/0.25.5/p11-kit-0.25.5.tar.xz
+    tar -xvJf p11-kit-0.25.5.tar.xz
+fi
+
+if [ ! -f libffi-3.4.5.tar.gz ]; then
+    wget https://github.com/libffi/libffi/releases/download/v3.4.5/libffi-3.4.5.tar.gz
+    tar -xvzf libffi-3.4.5.tar.gz
+fi
+
+if [ ! -f libtasn1-v4.20.0-src.tar.gz ]; then
+    wget https://ftp.gnu.org/gnu/libtasn1/libtasn1-v4.20.0-src.tar.gz
+    tar -xvzf libtasn1-v4.20.0-src.tar.gz
+fi
+
+if [ ! -f ca-certs/ca-certificates-2024.2.69_v8.0.401-8.fc44.noarch.rpm ]; then
+    mkdir ca-certs
+    cd ca-certs
+    wget https://kojipkgs.fedoraproject.org//packages/ca-certificates/2024.2.69_v8.0.401/8.fc44/noarch/ca-certificates-2024.2.69_v8.0.401-8.fc44.noarch.rpm
+    cd ..
+fi
+
+
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
 git clone https://git.savannah.gnu.org/git/bash.git --depth=1
@@ -144,3 +197,11 @@ git clone https://github.com/iputils/iputils.git --depth=1
 git clone https://github.com/SELinuxProject/selinux.git --depth=1
 
 git clone https://github.com/altlinux/libutempter.git --depth=1
+
+git clone https://github.com/curl/curl --depth=1
+
+git clone https://github.com/rockdaboot/libpsl --depth=1
+
+git clone https://github.com/ngtcp2/nghttp3 --depth=1
+
+git clone https://github.com/google/brotli --depth=1
