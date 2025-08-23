@@ -205,3 +205,7 @@ git clone https://github.com/rockdaboot/libpsl --depth=1
 git clone https://github.com/ngtcp2/nghttp3 --depth=1
 
 git clone https://github.com/google/brotli --depth=1
+
+git clone https://github.com/ibireme/yyjson/ --depth=1
+
+git clone https://github.com/fastfetch-cli/fastfetch --depth=1
