@@ -4,7 +4,7 @@ set -e
 mkdir -p build/iputils
 cd tmp/iputils
 
-meson setup build --prefix=/usr --buildtype=release -DUSE_IDN=false
+meson setup build --prefix=/usr --buildtype=release
 
 ninja -C build
 DESTDIR=$(realpath ../../build/iputils) ninja -C build install
