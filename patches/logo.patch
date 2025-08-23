@@ -1,0 +1,21 @@
+diff --git a/src/logo/builtin.c b/src/logo/builtin.c
+index 4de3cf0..2c9f454 100644
+--- a/src/logo/builtin.c
++++ b/src/logo/builtin.c
+@@ -1398,6 +1398,16 @@ static const FFlogo D[] = {
+         .colorKeys = FF_COLOR_FG_GREEN,
+         .colorTitle = FF_COLOR_FG_GREEN,
+     },
++    // Delta Linux
++    {
++        .names = {"Delta Linux", "deltalinux"},
++        .lines = FASTFETCH_DATATEXT_LOGO_DELTALINUX,
++        .colors = {
++            FF_COLOR_FG_WHITE,
++        },
++        .colorKeys = FF_COLOR_FG_GREEN,
++        .colorTitle = FF_COLOR_FG_GREEN,
++    },
+     // DesaOS
+     {
+         .names = {"DesaOS"},
