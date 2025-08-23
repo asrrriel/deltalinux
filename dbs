@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+TIMESTAMP_FILE_PKGS=.dbs/timestamp_pkgs
+TIMESTAMP_FILE_IMAGE=.dbs/timestamp_image
+
+mkdir -p .dbs
+
 if [ $# -eq 0 ]; then
   echo "No arguments provided. Please specify an action"
   exit 1
@@ -32,11 +37,63 @@ case $1 in
             fi
         done
     fi
+    if [ ! -f "$TIMESTAMP_FILE_PKGS" ]; then
+        touch "$TIMESTAMP_FILE_PKGS"
+        date +%s > "$TIMESTAMP_FILE_PKGS"
+    fi
+    date +%s > "$TIMESTAMP_FILE_PKGS"
     ;;
     image)
+    if [ ! -f "$TIMESTAMP_FILE_IMAGE" ]; then
+        touch "$TIMESTAMP_FILE_IMAGE"
+        date +%s > "$TIMESTAMP_FILE_IMAGE"
+    fi
+
+    ts_pkgs=$(stat -c %Y "$TIMESTAMP_FILE_PKGS")
+    ts_image=$(stat -c %Y "$TIMESTAMP_FILE_IMAGE")
+
+    if [ "$2" == "force" ]; then
+        echo "Forcing image rebuild"
+    else
+        if [ "$ts_image" -eq "$ts_pkgs" ]; then
+            echo "Image is up to date, run \"dbs image force\" to force an image rebuild"
+            exit 0
+        fi
+    fi
+
     sh scripts/make-image.sh
+
+    date +%s > "$TIMESTAMP_FILE_IMAGE"
+    date +%s > "$TIMESTAMP_FILE_PKGS"
     ;;
     run)
+
+    if [ ! -f "$TIMESTAMP_FILE_IMAGE" ] || [ ! -f "$TIMESTAMP_FILE_PKGS" ]; then
+        echo "No timestamps found! creating new ones"
+        date +%s > "$TIMESTAMP_FILE_IMAGE"
+        date +%s > "$TIMESTAMP_FILE_PKGS"
+    fi
+    ts_pkgs=$(stat -c %Y "$TIMESTAMP_FILE_PKGS")
+    ts_image=$(stat -c %Y "$TIMESTAMP_FILE_IMAGE")
+
+    if [ "$ts_image" -lt "$ts_pkgs" ]; then
+        echo "Image is out of date!"
+        read -p "Do you want to rebuild the image? [y/n] " answer
+        answer=${answer:-N}
+        case "$answer" in
+            [Yy]|[Yy][Ee][Ss])
+                echo "Rebuilding image..."
+                sh $0 image
+                ;;
+            [Nn]|[Nn][Oo])
+                echo "Skipping rebuild."
+                ;;
+            *)
+                echo "Invalid response. Please enter y or n."
+                ;;
+        esac
+    fi
+
     if [ -f "disk/disk.img" ]; then
         qemu-system-x86_64 -drive file=disk/disk.img,format=raw -m 2G -enable-kvm -serial stdio -cpu host
     else
