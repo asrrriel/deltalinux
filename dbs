@@ -95,7 +95,7 @@ case $1 in
     fi
 
     if [ -f "disk/disk.img" ]; then
-        qemu-system-x86_64 -drive file=disk/disk.img,format=raw -m 2G -enable-kvm -serial stdio -cpu host
+        qemu-system-x86_64 -drive file=disk/disk.img,format=raw -m 2G -enable-kvm -serial stdio -cpu host -nic user -net user
     else
         bash $0 image
         bash $0 run

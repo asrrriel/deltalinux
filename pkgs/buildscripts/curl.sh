@@ -6,7 +6,7 @@ cd tmp/curl
 
 autoreconf -fiv
 
-./configure --prefix=/usr --with-openssl
+./configure --prefix=/usr --with-openssl --enable-symbol-hiding
 make -j$(nproc)
 make -j$(nproc) DESTDIR=$(realpath ../../build/curl) install
 

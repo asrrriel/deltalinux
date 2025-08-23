@@ -12,4 +12,6 @@ cd ../../build/ca-certs
 cpio -idmv -F $CPIO_PATH
 cd ../..
 
+sudo curl -o build/ca-certs/etc/pki/ca-trust/source/anchors/mozilla.pem https://curl.se/ca/cacert.pem
+
 tar -czf done/ca-certs.tar.gz -C build/ca-certs .

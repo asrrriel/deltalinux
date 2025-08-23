@@ -118,13 +118,22 @@ if [ ! -f libtasn1-v4.20.0-src.tar.gz ]; then
     tar -xvzf libtasn1-v4.20.0-src.tar.gz
 fi
 
+if [ ! -f db-5.3.28.tar.gz ]; then
+    wget https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
+    tar -xvzf db-5.3.28.tar.gz
+fi
+
+if [ ! -f Error-0.17030.tar.gz ]; then
+    wget https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Error-0.17030.tar.gz
+    tar -xvzf Error-0.17030.tar.gz
+fi
+
 if [ ! -f ca-certs/ca-certificates-2024.2.69_v8.0.401-8.fc44.noarch.rpm ]; then
     mkdir ca-certs
     cd ca-certs
     wget https://kojipkgs.fedoraproject.org//packages/ca-certificates/2024.2.69_v8.0.401/8.fc44/noarch/ca-certificates-2024.2.69_v8.0.401-8.fc44.noarch.rpm
     cd ..
 fi
-
 
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
@@ -209,3 +218,13 @@ git clone https://github.com/google/brotli --depth=1
 git clone https://github.com/ibireme/yyjson/ --depth=1
 
 git clone https://github.com/fastfetch-cli/fastfetch --depth=1
+
+git clone https://github.com/libexpat/libexpat.git --depth=1
+
+git clone https://github.com/Perl/perl5.git --depth=1
+
+git clone https://github.com/markov2/perl5-MailTools.git perl_mailtools --depth=1
+
+git clone https://github.com/atoomic/perl-TimeDate.git perl_timedate --depth=1
+
+git clone git://git.kernel.org/pub/scm/git/git.git --depth=1
