@@ -49,9 +49,7 @@ case $1 in
 
     case $ACTION in
         sync)
-            git stash
-            git pull --rebase
-            git stash pop
+            git pull
             git submodule update --recursive --remote
             git push --recurse-submodules=on-demand
         ;;
