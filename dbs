@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+
+if [ $# -eq 0 ]; then
+  echo "No arguments provided. Please specify an action"
+  exit 1
+fi
+
+case $1 in
+    download)
+    sh pkgs/dl-core.sh
+    ;;
+    build)
+    if [ $# -eq 1 ]; then
+        sh pkgs/build-core.sh
+    else
+        packages=("${@:2}")
+        for pkg in "${packages[@]}"; do
+            if [ -f "pkgs/buildscripts/$pkg.sh" ]; then
+                cd pkgs
+                sh "buildscripts/$pkg.sh"
+                cd ..
+            else
+                echo "Build script not found for package: $pkg"
+            fi
+        done
+    fi
+    ;;
+    image)
+    sh scripts/make-image.sh
+    ;;
+    run)
+    if [ -f "disk/disk.img" ]; then
+        qemu-system-x86_64 -drive file=disk/disk.img,format=raw -m 2G -enable-kvm -serial stdio -cpu host
+    else
+        bash $0 image
+        bash $0 run
+    fi
+    ;;
+    *)
+    echo "Unknown action: $1"
+    exit 1
+    ;;
+esac
