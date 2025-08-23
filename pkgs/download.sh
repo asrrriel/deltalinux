@@ -129,3 +129,5 @@ git clone https://sourceware.org/git/elfutils.git --depth=1
 git clone https://git.netfilter.org/libmnl.git --depth=1
 
 git clone https://github.com/iputils/iputils.git --depth=1
+
+git clone https://github.com/SELinuxProject/selinux.git --depth=1
