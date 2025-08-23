@@ -83,6 +83,8 @@ sudo cp configs/limine.conf $ROOT_PATH/boot/boot/limine/limine.conf
 sudo cp configs/bash.bashrc $ROOT_PATH/etc/bash.bashrc
 sudo cp configs/bash.bashrc $ROOT_PATH/etc/profile
 sudo cp configs/auditd.conf $ROOT_PATH/etc/audit/auditd.conf
+sudo cp configs/os-release  $ROOT_PATH/etc/os-release
+sudo cp configs/hostname  $ROOT_PATH/etc/hostname
 sudo ldconfig -v -r $ROOT_PATH
 
 sudo ln -sf /usr/share/zoneinfo/UTC $ROOT_PATH/etc/localtime
