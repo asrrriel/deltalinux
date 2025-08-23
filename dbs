@@ -44,6 +44,34 @@ case $1 in
         bash $0 run
     fi
     ;;
+    vcs)
+    ACTION=$2
+
+    case $ACTION in
+        sync)
+            git stash
+            git pull --rebase
+            git stash pop
+            git submodule update --recursive --remote
+            git push --recurse-submodules=on-demand
+        ;;
+        commit)
+            git add --all
+            git commit -a -m "$3"
+        ;;
+        scommit)
+            git add --all
+            git commit -S -a -m "$3"
+        ;;
+        untrack)
+            git rm --cached "$3"
+        ;;
+        *)
+        echo "Unknown VCS action: $ACTION"
+        exit 1
+        ;;
+    esac
+    ;;
     *)
     echo "Unknown action: $1"
     exit 1
