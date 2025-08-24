@@ -123,6 +123,23 @@ if [ ! -f Error-0.17030.tar.gz ]; then
     tar -xvzf Error-0.17030.tar.gz
 fi
 
+if [ ! -f libunwind-1.6.2.tar.gz ]; then
+    wget https://download.savannah.nongnu.org/releases/libunwind/libunwind-1.6.2.tar.gz
+    tar -xvzf libunwind-1.6.2.tar.gz
+fi
+
+if [ ! -f nettle-3.10.tar.gz ]; then
+    wget https://ftp.gnu.org/gnu/nettle/nettle-3.10.tar.gz
+    tar -xvzf nettle-3.10.tar.gz
+fi
+
+if [ ! -f gmp-6.3.0.tar.xz ]; then
+    wget https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
+    tar -xvJf gmp-6.3.0.tar.xz
+fi
+
+
+
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
 git clone https://git.savannah.gnu.org/git/bash.git --depth=1
@@ -270,3 +287,23 @@ git clone https://gitlab.freedesktop.org/xorg/app/xinit.git --depth=1
 git clone https://gitlab.freedesktop.org/xorg/app/twm.git --depth=1
 
 git clone https://gitlab.freedesktop.org/pixman/pixman.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxshmfence --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxfont --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libfontenc --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/font/encodings --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/app/setxkbmap --depth=1
+
+git clone https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxkbfile --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxrandr --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxrender --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxcvt --depth=1

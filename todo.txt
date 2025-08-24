@@ -22,23 +22,20 @@ xorgproto !
 libxdmcp !
 xcb-proto !
 ~~mesa~~ no GL support for now
-libunwind
-libxau
-libxcvt
-libcdcmp
+libunwind !
 libxfont2 # note BUILD WITHOUT FREETYPE
-libfontenc
+libfontenc !
 xorg-font-encodings
 libxshmfence
-nettle
-gmp
+nettle !
+gmp !
 pixman !
-xorg-server-common
-xkeyboard-config
-xorg-setxkbmap
-libxkbfile
-libxrandr
-libxrender
+xkeyboard-config !
+xorg-setxkbmap !
+libxkbfile !
+libxrandr !
+libxrender !
+libxcvt
 
 # xf86-input-libinput deps
 libinput !
