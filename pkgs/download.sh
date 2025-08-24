@@ -267,7 +267,7 @@ git clone https://gitlab.freedesktop.org/libinput/libinput.git --depth=1
 
 git clone https://gitlab.freedesktop.org/libevdev/libevdev.git --depth=1
 
-git clone https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput.git --depth=1
+git clone https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput.git --depth=1 --branch=xf86-input-libinput-1.5.0
 
 git clone https://gitlab.freedesktop.org/xorg/driver/xf86-video-fbdev.git --depth=1 --branch=xf86-video-fbdev-0.5.1
 
