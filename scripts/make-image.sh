@@ -14,7 +14,7 @@ trap cleanup EXIT
 mkdir -p disk
 rm -f disk/disk.img
 
-dd if=/dev/zero of=disk/disk.img bs=1M count=$((4096*2))
+dd if=/dev/zero of=disk/disk.img bs=1M count=4096
 
 LOOP_DEV=$(sudo losetup --show -fP disk/disk.img)
 
@@ -58,6 +58,16 @@ sudo mknod $ROOT_PATH/dev/urandom c 1 9
 echo "root:x:0:0:root:/root:/bin/bash" | sudo tee $ROOT_PATH/etc/passwd > /dev/null
 echo "root:x:0:" | sudo tee $ROOT_PATH/etc/group > /dev/null
 echo "root:fPO/488rhd38A:20322:0:99999:7:::" | sudo tee $ROOT_PATH/etc/shadow > /dev/null # The password is "root", your welcome
+
+echo "susie:x:1000:1000:susie:/home/susie:/bin/bash" | sudo tee -a $ROOT_PATH/etc/passwd > /dev/null
+
+echo "susie:x:1000:" | sudo tee -a $ROOT_PATH/etc/group > /dev/null
+
+echo "susie:fPO/488rhd38A:20322:0:99999:7:::" | sudo tee -a $ROOT_PATH/etc/shadow > /dev/null # The password is "root", your welcome
+
+# Optional: create home directory
+sudo mkdir -p $ROOT_PATH/home/susie
+sudo chown 1000:1000 $ROOT_PATH/home/susie
 
 sudo chmod 644 $ROOT_PATH/etc/passwd $ROOT_PATH/etc/group
 sudo chmod 600 $ROOT_PATH/etc/shadow

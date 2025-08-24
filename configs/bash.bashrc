@@ -11,7 +11,6 @@ ip link set ens3 up
 ip route add default via 10.0.2.1
 echo "nameserver 10.0.2.3" | tee /etc/resolv.conf
 
-export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus" 
-export XDG_DATA_DIR="/run/user/$(id -u)/"
+mkdir -p /run/user/$(id -u) 2> /dev/ttyS0
 
-startx 2> /dev/ttyS0
+export XDG_DATA_DIR="/run/user/$(id -u)/"

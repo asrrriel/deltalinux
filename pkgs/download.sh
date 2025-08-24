@@ -143,7 +143,10 @@ if [ ! -f xterm.tar.gz ]; then
     tar -xvzf xterm.tar.gz
 fi
 
-
+if [ ! -f mtdev-1.1.7.tar.gz ]; then
+    wget https://bitmath.se/org/code/mtdev/mtdev-1.1.7.tar.gz
+    tar -xvzf mtdev-1.1.7.tar.gz
+fi
 
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 

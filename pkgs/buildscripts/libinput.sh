@@ -10,7 +10,8 @@ meson setup build \
     -Ddebug-gui=false \
     -Dtests=false \
     -Ddocumentation=false \
-    -Dlibwacom=false
+    -Dlibwacom=false \
+    -Dlua-interpreter=false
 
 ninja -C build
 
