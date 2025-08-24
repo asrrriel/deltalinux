@@ -118,11 +118,6 @@ if [ ! -f libtasn1-v4.20.0-src.tar.gz ]; then
     tar -xvzf libtasn1-v4.20.0-src.tar.gz
 fi
 
-if [ ! -f db-5.3.28.tar.gz ]; then
-    wget https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
-    tar -xvzf db-5.3.28.tar.gz
-fi
-
 if [ ! -f Error-0.17030.tar.gz ]; then
     wget https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Error-0.17030.tar.gz
     tar -xvzf Error-0.17030.tar.gz

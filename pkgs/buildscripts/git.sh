@@ -10,7 +10,8 @@ make configure
     --with-libpcre2 \
     --with-openssl \
     --with-curl \
-    --with-expat
+    --with-expat \
+    --without-libdb
 
 make -j$(nproc) all
 
