@@ -128,13 +128,6 @@ if [ ! -f Error-0.17030.tar.gz ]; then
     tar -xvzf Error-0.17030.tar.gz
 fi
 
-if [ ! -f ca-certs/ca-certificates-2024.2.69_v8.0.401-8.fc44.noarch.rpm ]; then
-    mkdir ca-certs
-    cd ca-certs
-    wget https://kojipkgs.fedoraproject.org//packages/ca-certificates/2024.2.69_v8.0.401/8.fc44/noarch/ca-certificates-2024.2.69_v8.0.401-8.fc44.noarch.rpm
-    cd ..
-fi
-
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
 
 git clone https://git.savannah.gnu.org/git/bash.git --depth=1
