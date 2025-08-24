@@ -2,16 +2,18 @@
 set -e
 
 mkdir -p build/ca-certs
-cd tmp/ca-certs
+cd build/ca-certs
 
-rpm2cpio *.rpm > ca-certs.cpio
+curl -o cacert.pem https://curl.se/ca/cacert.pem
 
-CPIO_PATH=$(realpath ca-certs.cpio)
+mkdir -p etc
+mkdir -p etc/ssl
+mkdir -p etc/ssl/certs
 
-cd ../../build/ca-certs
-cpio -idmv -F $CPIO_PATH
+mv cacert.pem etc/ssl/cert.pem
+ln -sf ../cert.pem etc/ssl/certs/ca-certificates.crt
+ln -sf ../cert.pem etc/ssl/certs/ca-bundle.crt
+
 cd ../..
-
-sudo curl -o build/ca-certs/etc/pki/ca-trust/source/anchors/mozilla.pem https://curl.se/ca/cacert.pem
 
 tar -czf done/ca-certs.tar.gz -C build/ca-certs .
