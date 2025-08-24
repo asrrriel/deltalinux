@@ -85,6 +85,8 @@ sudo cp configs/bash.bashrc $ROOT_PATH/etc/profile
 sudo cp configs/auditd.conf $ROOT_PATH/etc/audit/auditd.conf
 sudo cp configs/os-release  $ROOT_PATH/etc/os-release
 sudo cp configs/hostname  $ROOT_PATH/etc/hostname
+sudo mkdir -p $ROOT_PATH/etc/X11/xorg.conf.d/
+sudo cp configs/10-libinput.conf $ROOT_PATH/etc/X11/xorg.conf.d/10-libinput.conf
 sudo ldconfig -v -r $ROOT_PATH
 
 sudo ln -sf /usr/share/zoneinfo/UTC $ROOT_PATH/etc/localtime

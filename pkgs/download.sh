@@ -320,3 +320,5 @@ git clone https://gitlab.freedesktop.org/xorg/lib/libxaw --depth=1
 git clone https://gitlab.freedesktop.org/xorg/lib/libxinerama --depth=1
 
 git clone https://gitlab.freedesktop.org/xorg/lib/libxpm --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/app/xclock.git --depth=1
