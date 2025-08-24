@@ -230,3 +230,55 @@ git clone https://github.com/atoomic/perl-TimeDate.git perl_timedate --depth=1
 git clone git://git.kernel.org/pub/scm/git/git.git --depth=1
 
 git clone https://github.com/python/cpython.git --depth=1
+
+git clone https://gitlab.freedesktop.org/dbus/dbus.git --depth=1
+
+git clone https://gitlab.freedesktop.org/mesa/drm.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libpciaccess --depth=1
+
+git clone https://github.com/anholt/libepoxy.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libx11 --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxcb.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxau.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/proto/xorgproto.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxdmcp.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/proto/xcbproto.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/xserver.git --depth=1
+
+git clone https://gitlab.freedesktop.org/libinput/libinput.git --depth=1
+
+git clone https://gitlab.freedesktop.org/libevdev/libevdev.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/driver/xf86-video-fbdev.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/app/xauth.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxext.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxmu.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxt.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libice.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libsm.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/app/xmodmap.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/app/xrdb.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/app/xinit.git --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/app/twm.git --depth=1
+
+git clone https://gitlab.freedesktop.org/pixman/pixman.git --depth=1

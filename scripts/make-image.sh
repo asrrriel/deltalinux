@@ -14,7 +14,7 @@ trap cleanup EXIT
 mkdir -p disk
 rm -f disk/disk.img
 
-dd if=/dev/zero of=disk/disk.img bs=1M count=4096
+dd if=/dev/zero of=disk/disk.img bs=1M count=$((4096*2))
 
 LOOP_DEV=$(sudo losetup --show -fP disk/disk.img)
 
