@@ -6,8 +6,9 @@ python !
 xorg-server !
 xf86-video-fbdev ! <- video driver for X
 xf86-input-libinput ! <- input driver for X
-xorg-xinit
-xorg-twm
+xorg-xinit !
+xorg-twm !
+xorg-xterm !
 
 # xorg-server deps
 dbus !

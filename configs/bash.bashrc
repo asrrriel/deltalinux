@@ -10,3 +10,8 @@ ip addr add 10.0.2.15/24 dev ens3
 ip link set ens3 up
 ip route add default via 10.0.2.1
 echo "nameserver 10.0.2.3" | tee /etc/resolv.conf
+
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/0/bus" 
+export XDG_DATA_DIR="/run/user/0"
+
+startx 2> /dev/ttyS0

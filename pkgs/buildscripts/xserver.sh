@@ -16,8 +16,7 @@ meson setup build \
     -Ddri3=false \
     -Dxvfb=true \
     -Dxnest=true \
-    -Dxephyr=true \
-    -Dxwayland=false
+    -Dxephyr=true 
 
 ninja -C build
 

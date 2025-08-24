@@ -138,6 +138,11 @@ if [ ! -f gmp-6.3.0.tar.xz ]; then
     tar -xvJf gmp-6.3.0.tar.xz
 fi
 
+if [ ! -f xterm.tar.gz ]; then
+    wget https://invisible-island.net/datafiles/release/xterm.tar.gz
+    tar -xvzf xterm.tar.gz
+fi
+
 
 
 git clone https://github.com/limine-bootloader/limine/ --branch=v8.x --depth=1
@@ -256,7 +261,7 @@ git clone https://gitlab.freedesktop.org/xorg/lib/libxdmcp.git --depth=1
 
 git clone https://gitlab.freedesktop.org/xorg/proto/xcbproto.git --depth=1
 
-git clone https://gitlab.freedesktop.org/xorg/xserver.git --depth=1
+git clone https://gitlab.freedesktop.org/xorg/xserver.git --depth=1 --branch=server-21.1-branch
 
 git clone https://gitlab.freedesktop.org/libinput/libinput.git --depth=1
 
@@ -264,7 +269,7 @@ git clone https://gitlab.freedesktop.org/libevdev/libevdev.git --depth=1
 
 git clone https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput.git --depth=1
 
-git clone https://gitlab.freedesktop.org/xorg/driver/xf86-video-fbdev.git --depth=1
+git clone https://gitlab.freedesktop.org/xorg/driver/xf86-video-fbdev.git --depth=1 --branch=xf86-video-fbdev-0.5.1
 
 git clone https://gitlab.freedesktop.org/xorg/app/xauth.git --depth=1
 
@@ -307,3 +312,11 @@ git clone https://gitlab.freedesktop.org/xorg/lib/libxrandr --depth=1
 git clone https://gitlab.freedesktop.org/xorg/lib/libxrender --depth=1
 
 git clone https://gitlab.freedesktop.org/xorg/lib/libxcvt --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/app/xkbcomp --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxaw --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxinerama --depth=1
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxpm --depth=1
