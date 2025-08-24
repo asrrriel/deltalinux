@@ -1,0 +1,39 @@
+curl !
+findutils !
+less !
+git !
+python !
+xorg-server !
+xf86-video-fbdev ! <- video driver for X
+xf86-input-libinput ! <- input driver for X
+xorg-xinit
+xorg-twm
+
+# xorg-server deps
+dbus !
+libdrm !
+libpciaccess !
+libeproxy !
+~~libglvnd~~ no gl support for now
+libx11 !
+libxcb !
+libxau !
+xorgproto !
+libxdmcp !
+xcb-proto !
+~~mesa~~ no GL support for now
+
+# xf86-input-libinput deps
+libinput !
+libevdev !
+~~libwatcom~~ no watcom tablet support rn
+
+# xorg-xinit deps
+xorg-xauth
+libxext
+libxmu
+libxt
+libice
+libsm
+xorg-xmodmap
+xorg-xrdb
